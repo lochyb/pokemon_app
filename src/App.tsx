@@ -8,7 +8,7 @@ const App: React.FC<{}> = () => {
   const [apiData, setApiData] = useState(Object);
   const [loading, setLoading] = useState(true)
   const fetchData = () => {
-    fetch("https://pokeapi.co/api/v2/pokemon/151")
+    fetch("https://pokeapi.co/api/v2/pokemon/200")
       .then((response) => response.json())
       .then((y) => setApiData(y))
       .then(() => setLoading(false))
