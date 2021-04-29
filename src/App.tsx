@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {Card} from "./Card";
 
-function App() {
+const App: React.FC<{}> = () => {
+  const [apiData, setApiData] = useState("");
+  const fetchData = () => {
+    fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+    .then((response) => response.json())
+    .then((y) => setApiData(y))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<div>
+  <button onClick={fetchData}>Fetch Api Data</button>
+  <p>{apiData !== "" && <Card name={JSON.stringify(apiData)} />}</p>
+    
+</div>
   );
 }
+
 
 export default App;
