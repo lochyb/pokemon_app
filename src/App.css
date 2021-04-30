@@ -26,3 +26,28 @@
     transform: rotate(360deg);
   }
 }
+
+body{
+  text-align: center;
+}
+
+img{
+  width: auto;
+  height: 200px;
+}
+.left{
+  display: inline-flex;
+  align-items: center;
+}
+
+.wrapper{
+  display: inline-flex;
+  overflow: auto;
+  flex-direction: column;
+  width: 80%;
+}
+
+.right{
+  display: inline-flex;
+  align-items: center;
+}
