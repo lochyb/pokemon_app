@@ -4,29 +4,31 @@ import { Card } from "./SpriteCard";
 import Info from "./Info";
 import SimpleInfo from "./SimpleInfo";
 
-const App: React.FC<{}> = () => {
-  const [data1, setData1] = useState({ data: Object, loading: true });
-  const [data2, setData2] = useState({ data: Array, loading: true });
-  
+const App = () => {
+  const [singlePokemon, setSinglePokemon] = useState({});
+  const [singleLoading, setSingleLoading] = useState(true);
+  const [manyPokemon, setManyPokemon] = useState({});
+  const [manyLoading, setManyLoading] = useState(true);
   
   
   const newArray: any = [];
 
+  
   const  fetchData = async () => {
-    fetch("https://pokeapi.co/api/v2/pokemon/ditto")
-      .then((response) => response.json())
-      .then((y) => setData1({ data: y, loading: false }));
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon/ditto");
+    const data = await response.json();
+    const moveData = await setSinglePokemon(data);
+    const update = await setSingleLoading(false);
+
   };
 
-  const fetchData2 = () => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
-      .then((res) => res.json())
-      .then((y) =>
-        y.results.forEach((pokemon: any) =>
-          fetchData2Data((pokemon)
-          )
-        )
-      ).then(() => setData2({data: newArray, loading: false}))
+
+  const fetchData2 = async () => {
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=99&offset=151")
+    const data =  await response.json();
+    const set =  await data.results.forEach((pokemon: any) =>fetchData2Data((pokemon)))
+    const update = await setManyPokemon(newArray);
+    const updateState = await setTimeout(function () {setManyLoading(false)},2000)
   };
 
   function fetchData2Data(x: any) {
@@ -35,16 +37,19 @@ const App: React.FC<{}> = () => {
               .then((x) => newArray.push(x))
   }
 
-  function printCards(){
-   return <SimpleInfo data={data2.data} />;
-  }
 
   return (
     <div>
       <button onClick={fetchData}>Fetch Api Data</button>
       <button onClick={fetchData2}>Fetch All Data</button>
-      {<div>{data1.loading ? <p>Loading...</p> : <Info data={data1.data} />}</div>}
-      {<div>{printCards()}</div>}
+
+
+
+      {<div>{singleLoading ? <p>Loading...</p> : <Info data={singlePokemon} />}</div>}
+      {<div>{manyLoading ? <p>Loading...</p> : <SimpleInfo data={manyPokemon} />} </div>}
+
+
+
     </div>
   );
 };

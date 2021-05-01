@@ -3,27 +3,25 @@ import React, { useEffect, useState } from "react";
 interface Props {
   data: any;
 }
-const SimpleInfo: React.FC<Props> = ({ data}) => {
+
+// document.querySelectorAll("cardContainer").hover((x: any) => x.css("background-color","red"));
+
+
+const SimpleInfo: React.FC<Props> = ({data }) => {
   
 
- function mapCards(){
-  return data.map((x: any) => <p>{x.name}</p>)
-
-}
-
-// function delaymapCards(){
-//   return  <p>{data !== [] && data[0].name}</p>
-
-// }
-
-
     return (
-    <div>
-      <hr></hr>
-      <div>{data !== Array && mapCards()}</div>
-      {/* <div>{delaymapCards()}</div> */}
-      <p>Hello</p>
-      {/* {data === Array && <p>UNDEFINED</p>} */}
+    <div className="cardContainer">
+      {data.map((x: any) => 
+     <div className="pokemonCard" key={x.id}>
+        <div className="photoWrapper">
+       <img src={x.sprites.versions['generation-vi']['omegaruby-alphasapphire'].front_default} alt="pokemonIcon" className="sprites"></img>
+       <img className="shiny sprites" src={x.sprites.versions['generation-vi']['omegaruby-alphasapphire'].front_shiny} alt="pokemonIcon" ></img>
+       </div>
+       <p>{x.id}</p>
+       <p>{x.name}</p>
+       <p>{x.types.map((x:any) => <p>{x.type.name}</p>)}</p>
+       </div>)} 
     </div>
   );
 };
