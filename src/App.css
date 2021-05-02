@@ -40,4 +40,12 @@ img{
 z-index: -10
  }
 
+ .shinyOn{
+   z-index: -10
+ }
 
+ .types{
+   display: inline-flex;
+   width: 92%;
+   justify-content: space-evenly;
+ }

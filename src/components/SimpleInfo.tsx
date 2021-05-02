@@ -9,9 +9,9 @@ interface Props {
 
 const SimpleInfo: React.FC<Props> = ({data }) => {
   
-function showShiny(){
-  document.getElementById('252').className="shinyOn"
-}
+// function showShiny(){
+//   document.getElementById('252').className="shinyOn"
+// }
 
     return (
     <div className="cardContainer">
