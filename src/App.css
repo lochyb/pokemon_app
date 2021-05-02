@@ -4,6 +4,8 @@
 
 body{
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  background-image: url(./pexels-suzy-hazelwood-7026467.jpg);
 }
 
 img{
@@ -26,6 +28,10 @@ img{
   display: inline-block;
   margin: 1rem;
   min-height: 300px;
+  border: 1px solid black;
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 
@@ -37,11 +43,15 @@ img{
 }
 
  .shiny:active{
-z-index: -10
+  z-index: -10;
  }
 
- .shinyOn{
-   z-index: -10
+ .shiny{
+   z-index: 10
+ }
+
+ .hide{
+   visibility: hidden;
  }
 
  .types{
@@ -49,3 +59,21 @@ z-index: -10
    width: 92%;
    justify-content: space-evenly;
  }
+
+ .scroll{
+   overflow: scroll;
+   max-width: 90%;
+margin: auto;
+ }
+
+ table{
+   border-collapse: collapse;
+   margin: auto;
+   background: white;
+  
+ }
+
+ tr, td, th{
+   border-style: solid;
+ }
+

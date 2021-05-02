@@ -6,3 +6,4 @@ export async function getPokemon(url: string){
     })
 }
 
+

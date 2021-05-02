@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Info from "./components/Info";
 import SimpleInfo from "./components/SimpleInfo";
@@ -9,13 +9,16 @@ const App = () => {
   const [singleLoading, setSingleLoading] = useState(true);
   const [manyPokemon, setManyPokemon] = useState({});
   const [manyLoading, setManyLoading] = useState(true);
+  const [pokemonSearch, setPokemonSearch] = useState('ditto');
 
-
-  const fetchData = async () => {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon/ditto");
+  const fetchData = async (e: any) => {
+    e.preventDefault();
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${pokemonSearch}`
+    );
     const data = await response.json();
-    const update1 = await setSinglePokemon(data);
-    const update2 = await setSingleLoading(false);
+    setSinglePokemon(data);
+    setSingleLoading(false);
   };
 
   async function getData() {
@@ -26,7 +29,6 @@ const App = () => {
     const set = await loadingPokemon(data.results);
     const update = await setManyLoading(false);
   }
-
 
   const loadingPokemon = async (data: any) => {
     let _pokemonData = await Promise.all(
@@ -40,17 +42,28 @@ const App = () => {
 
   return (
     <div>
-      <button onClick={fetchData}>Fetch Api Data</button>
-      <button onClick={getData}>Fetch All Data</button>
+      <h1>Pokemon Search App</h1>
+      <form onSubmit={fetchData}>
+        <input
+          type="text"
+          placeholder="Pokemon Name or Number"
+          onChange={(x) => setPokemonSearch(x.target.value.toLowerCase())}
+        />
+        <button>Search</button>
+      </form>
+
 
       {
         <div>
+      <button onClick={() => setSingleLoading(!singleLoading)}>Show/Hide</button>
           {singleLoading ? <p>Loading...</p> : <Info data={singlePokemon} />}
         </div>
       }
       <hr></hr>
       {
         <div>
+                <button onClick={getData}>Fetch All Data</button>
+      <button onClick={() => setManyLoading(!manyLoading)}>Show/Hide</button>
           {manyLoading ? <p>Loading...</p> : <SimpleInfo data={manyPokemon} />}{" "}
         </div>
       }
