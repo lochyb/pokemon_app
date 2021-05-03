@@ -1,3 +1,4 @@
+import { time } from "node:console";
 import React from "react";
 
 interface Props {
@@ -6,25 +7,20 @@ interface Props {
 export const Card: React.FC<Props> = ({ data }) => {
   const gens: any = data.sprites.versions;
   const names = Object.entries(gens).map((generation: any) => generation);
-
   return (
     <div>
-      <div className="wrapper">
-      {names.map((x: any) => (
-        <div className="left">
-          <p>{x[0]}</p>
-          {Object.values(x[1]).map((p:any) => p.front_default !== null && (<img src={p.front_default} alt="pokemon"></img>))}
-        </div>
-      ))}
-      </div>
-
-      <div className="wrapper">
+      <div className='wrapper'>
         {names.map((x: any) => (
-        <div className="right">
-          <p>{x[0]}</p>
-          {Object.values(x[1]).map((p:any) => p.front_shiny !== null && (<img src={p.front_shiny} alt="pokemon"></img>))}
-        </div>
-      ))}
+          <div className='left'>
+            <p>{x[0]}</p>
+            {Object.values(x[1]).map(
+              (p: any) =>
+                p.front_default !== null && (
+                  <img src={p.front_default} alt='pokemon'></img>
+                )
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
