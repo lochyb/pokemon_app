@@ -2,17 +2,19 @@ import React, { useState } from "react";
 
 interface Props {
   data: any;
+  loadingState: boolean;
 }
 
-const SimpleInfo: React.FC<Props> = ({ data }) => {
+const SimpleInfo: React.FC<Props> = ({ data, loadingState }) => {
   const [active, setActive] = useState(false);
-
+  const [state, setState] = useState(false);
   function toggleMouseDown() {
     setActive(!active);
   }
 
   return (
     <div className='cardContainer'>
+      <button>{loadingState ? <span>Show</span> : <span>Hide</span>}</button>
       <h3>Shiny List</h3>
       <p>Click to toggle Shiny</p>
       {data.map((x: any) => (
@@ -28,7 +30,7 @@ const SimpleInfo: React.FC<Props> = ({ data }) => {
             <img
               src={x.sprites.versions["generation-iii"].emerald.front_default}
               alt='pokemonIcon'
-              className='sprites'></img>
+              className='sprites nonShiny'></img>
           </div>
           <p>{x.id}</p>
           <p>{x.name}</p>
@@ -42,5 +44,4 @@ const SimpleInfo: React.FC<Props> = ({ data }) => {
     </div>
   );
 };
-
 export default SimpleInfo;
