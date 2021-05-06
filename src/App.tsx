@@ -69,9 +69,7 @@ const App = () => {
       {
         <div>
           <button onClick={getData}>Fetch All Data</button>
-          {!manyLoading && (
-            <SimpleInfo data={manyPokemon} loadingState={manyLoading} />
-          )}
+          {!manyLoading && <SimpleInfo data={manyPokemon} />}
         </div>
       }
     </div>
