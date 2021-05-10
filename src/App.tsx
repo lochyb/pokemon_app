@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Info from "./components/Info";
 import SimpleInfo from "./components/SimpleInfo";
@@ -57,14 +57,8 @@ const App = () => {
         <button>Search</button>
       </form>
 
-      {
-        <div>
-          <button onClick={() => setSingleLoading(!singleLoading)}>
-            {singleLoading ? <span>Show</span> : <span>Hide</span>}
-          </button>
-          {!singleLoading && <Info data={singlePokemon} />}
-        </div>
-      }
+      <div>{!singleLoading && <Info data={singlePokemon} />}</div>
+
       <hr></hr>
       {
         <div>
