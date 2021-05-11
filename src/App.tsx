@@ -15,10 +15,10 @@ const App = () => {
     loading: true,
   });
 
-  async function getData() {
-    const response: any = await getPokemon(
-      "https://pokeapi.co/api/v2/pokemon?limit=135&offset=251"
-    );
+  async function getData(url: any) {
+    setManyLoading(true);
+    console.log(manyLoading);
+    const response: any = await getPokemon(url);
     const set = await loadingPokemon(response.results);
     const update = await setManyLoading(false);
   }
@@ -31,7 +31,6 @@ const App = () => {
       })
     );
     setManyPokemon(_pokemonData);
-    console.log(manyPokemon);
   };
 
   // Testing Function Here
@@ -62,8 +61,35 @@ const App = () => {
       <hr></hr>
       {
         <div>
-          <button onClick={getData}>Fetch All Data</button>
-          {!manyLoading && <SimpleInfo data={manyPokemon} />}
+          <button
+            onClick={() =>
+              getData("https://pokeapi.co/api/v2/pokemon?limit=151")
+            }>
+            Gen 1
+          </button>
+          <button
+            onClick={() =>
+              getData("https://pokeapi.co/api/v2/pokemon?limit=100&offset=151")
+            }>
+            Gen 2
+          </button>
+
+          <button
+            onClick={() =>
+              getData("https://pokeapi.co/api/v2/pokemon?limit=135&offset=251")
+            }>
+            Gen 3
+          </button>
+          <button
+            onClick={() =>
+              getData("https://pokeapi.co/api/v2/pokemon?limit=135&offset=251")
+            }>
+            Gen 4
+          </button>
+
+          {!manyLoading && (
+            <SimpleInfo data={manyPokemon} loading={manyLoading} />
+          )}
         </div>
       }
     </div>
