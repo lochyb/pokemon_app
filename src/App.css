@@ -2,29 +2,28 @@
   text-align: center;
 }
 
-body{
+body {
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-image: url(./pexels-suzy-hazelwood-7026467.jpg);
 }
 
-img{
+img {
   width: auto;
   height: 200px;
-
 }
 
-.cardContainer{
+.cardContainer {
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
 }
 
-.photoWrapper{
+.photoWrapper {
   position: relative;
   height: 200px;
   width: 200px;
   margin: 0 auto;
 }
-.pokemonCard{
+.pokemonCard {
   display: inline-block;
   margin: 1rem;
   min-height: 300px;
@@ -34,46 +33,47 @@ img{
   border-radius: 1rem;
 }
 
-
-.sprites{
+.sprites {
   position: absolute;
   top: 0;
   left: 0;
-
 }
 
- .shiny:active{
-  z-index: -10;
- }
+/* .shiny:hover {
+  visibility: hidden;
+} */
 
- .shiny{
-   z-index: 10
- }
+/* .nonShiny {
+  pointer-events: none;
+} */
+.shiny {
+  z-index: 10;
+}
 
- .hide{
-   visibility: hidden;
- }
+.hide {
+  visibility: hidden;
+}
 
- .types{
-   display: inline-flex;
-   width: 92%;
-   justify-content: space-evenly;
- }
+.types {
+  display: inline-flex;
+  width: 92%;
+  justify-content: space-evenly;
+}
 
- .scroll{
-   overflow: scroll;
-   max-width: 90%;
-margin: auto;
- }
+.scroll {
+  overflow: scroll;
+  max-width: 90%;
+  margin: auto;
+}
 
- table{
-   border-collapse: collapse;
-   margin: auto;
-   background: white;
-  
- }
+table {
+  border-collapse: collapse;
+  margin: auto;
+  background: white;
+}
 
- tr, td, th{
-   border-style: solid;
- }
-
+tr,
+td,
+th {
+  border-style: solid;
+}
