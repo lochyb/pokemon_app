@@ -5,7 +5,7 @@ interface Props {
   loading: boolean;
 }
 
-const SimpleInfo: React.FC<Props> = ({ data, loading }) => {
+const ShinyPokemonToggle: React.FC<Props> = ({ data, loading }) => {
   const [active, setActive] = useState(false);
   const [show, setShow] = useState(true);
   console.log(loading);
@@ -50,4 +50,4 @@ const SimpleInfo: React.FC<Props> = ({ data, loading }) => {
     </div>
   );
 };
-export default SimpleInfo;
+export default ShinyPokemonToggle;
