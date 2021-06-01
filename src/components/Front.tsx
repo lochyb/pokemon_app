@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Info from "./Info";
 import ShinyList from "./ShinyList";
 import { getPokemon } from "../fetch";
@@ -16,11 +16,14 @@ const Front = () => {
 
   async function getData(url: any) {
     setManyLoading(true);
-    console.log(manyLoading);
     const response: any = await getPokemon(url);
     const set = await loadingPokemon(response.results);
     const update = await setManyLoading(false);
   }
+  useEffect(() => {
+    console.log("Changed");
+    return () => {};
+  }, [manyPokemon]);
 
   const loadingPokemon = async (data: any) => {
     let _pokemonData = await Promise.all(
@@ -86,10 +89,13 @@ const Front = () => {
             }>
             Gen 4
           </button>
+          <p>{manyLoading && "loading"}</p>
 
-          {!manyLoading && (
+          {/* {!manyLoading && (
             <ShinyList data={manyPokemon} loading={manyLoading} />
-          )}
+          )} */}
+
+          <ShinyList data={manyPokemon} loading={manyLoading} />
         </div>
       }
     </div>

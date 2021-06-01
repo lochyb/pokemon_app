@@ -1,5 +1,4 @@
 import React, { useState, Suspense } from "react";
-// import ShinyPokemonToggle from "./ShinyListLayout";
 import { Loader } from "./Loader";
 
 interface Props {
@@ -10,13 +9,19 @@ interface Props {
 const ShinyLoader: any = React.lazy(() => {
   return import("./ShinyListLayout");
 });
+
 const SimpleInfo: React.FC<Props> = ({ data, loading }) => {
+  const [ready, setReady] = useState(!loading);
+  console.log(ready, loading);
   return (
     <div>
-      {/* <ShinyPokemonToggle data={data} loading={loading} /> */}
-      <Suspense fallback={<Loader />}>
-        <ShinyLoader data={data} loading={loading} />
-      </Suspense>
+      {ready && (
+        <div>
+          <Suspense fallback={<Loader />}>
+            <ShinyLoader data={data} loading={ready} />
+          </Suspense>{" "}
+        </div>
+      )}
     </div>
   );
 };
