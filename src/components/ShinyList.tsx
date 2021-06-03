@@ -1,27 +1,25 @@
 import React, { useState, Suspense } from "react";
-import { Loader } from "./Loader";
-
+// import { Loader } from "./Loader";
+import ShinyPokemonToggle from "./ShinyListLayout";
 interface Props {
   data: any;
-  loading: boolean;
 }
 
-const ShinyLoader: any = React.lazy(() => {
-  return import("./ShinyListLayout");
-});
+// const ShinyLoader: any = React.lazy(() => {
+//   return import("./ShinyListLayout");
+// });
 
-const SimpleInfo: React.FC<Props> = ({ data, loading }) => {
-  const [ready, setReady] = useState(!loading);
-  console.log(ready, loading);
+const SimpleInfo: React.FC<Props> = ({ data }) => {
   return (
     <div>
-      {ready && (
-        <div>
-          <Suspense fallback={<Loader />}>
-            <ShinyLoader data={data} loading={ready} />
-          </Suspense>{" "}
-        </div>
-      )}
+      <div>
+        <ShinyPokemonToggle data={data} />
+      </div>
+      {/* <div>
+        <Suspense fallback={<Loader />}> */}
+      {/* <ShinyLoader data={data} /> */}
+      {/* </Suspense>{" "}
+      </div> */}
     </div>
   );
 };

@@ -2,20 +2,17 @@ import React, { useState } from "react";
 
 interface Props {
   data: any;
-  loading: boolean;
 }
 
-const ShinyPokemonToggle: React.FC<Props> = ({ data, loading }) => {
+const ShinyPokemonToggle: React.FC<Props> = ({ data }) => {
   const [active, setActive] = useState(false);
   const [show, setShow] = useState(true);
-  console.log(loading);
   return (
     <div className='cardContainer'>
       <h3>Shiny List</h3>
       <button onClick={() => setShow(!show)}>
         {show ? <span>Hide</span> : <span>Show</span>}
       </button>
-      {loading && <p>Loading...</p>}
       {show && (
         <div>
           <p>Click to toggle Shiny</p>

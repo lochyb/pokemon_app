@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Info from "./Info";
 import ShinyList from "./ShinyList";
 import { getPokemon } from "../fetch";
+import { SkeletonLayout } from "./skeleton/SkeletonLayout";
 
 const Front = () => {
   const [singlePokemon, setSinglePokemon] = useState({});
@@ -48,7 +49,7 @@ const Front = () => {
 
   return (
     <div>
-      <h1>Pokemon Search App</h1>
+      {/* <h1>Pokemon Search App</h1>
       <form onSubmit={getSinglePokemon}>
         <input
           type='text'
@@ -59,7 +60,7 @@ const Front = () => {
         <button>Search</button>
       </form>
 
-      <div>{!singleLoading && <Info data={singlePokemon} />}</div>
+      <div>{!singleLoading && <Info data={singlePokemon} />}</div> */}
 
       <hr></hr>
       {
@@ -89,13 +90,15 @@ const Front = () => {
             }>
             Gen 4
           </button>
-          <p>{manyLoading && "loading"}</p>
 
-          {/* {!manyLoading && (
-            <ShinyList data={manyPokemon} loading={manyLoading} />
-          )} */}
-
-          <ShinyList data={manyPokemon} loading={manyLoading} />
+          {!manyLoading ? (
+            <ShinyList data={manyPokemon} />
+          ) : (
+            <>
+              <SkeletonLayout type='skeleton-card' />
+              <SkeletonLayout type='skeleton-background' />
+            </>
+          )}
         </div>
       }
     </div>

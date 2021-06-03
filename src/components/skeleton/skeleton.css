@@ -1,0 +1,24 @@
+.skeleton-wrapper {
+  display: flex;
+  background-color: #fff;
+  height: 100vh;
+}
+
+.skeleton-card {
+  gap: 1rem;
+  background-color: greenyellow;
+  width: 200px;
+  height: 468px;
+  margin: auto;
+  border-radius: 1rem;
+}
+
+.skeleton-background {
+  width: 200px;
+  height: 468px;
+  background-color: gray;
+  text-align: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem, auto;
+}
