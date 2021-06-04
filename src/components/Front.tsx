@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Info from "./Info";
 import ShinyList from "./ShinyList";
 import { getPokemon } from "../fetch";
-import { SkeletonLayout } from "./skeleton/SkeletonLayout";
+import { SkeletonCard } from "./skeleton/SkeletonCard";
 
 const Front = () => {
   const [singlePokemon, setSinglePokemon] = useState({});
@@ -95,8 +95,7 @@ const Front = () => {
             <ShinyList data={manyPokemon} />
           ) : (
             <>
-              <SkeletonLayout type='skeleton-card' />
-              <SkeletonLayout type='skeleton-background' />
+              <SkeletonCard />
             </>
           )}
         </div>

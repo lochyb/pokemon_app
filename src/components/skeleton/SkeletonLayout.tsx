@@ -5,7 +5,7 @@ interface Props {
   type: string;
 }
 
-export const SkeletonLayout: React.FC<Props> = ({ type }) => {
-  const classNames = `skeleton ${type}`;
+export const SkeletonPiece: React.FC<Props> = ({ type }) => {
+  const classNames = `skeleton-${type}`;
   return <div className={classNames}> </div>;
 };
