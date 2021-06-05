@@ -37,7 +37,10 @@ const ShinyPokemonToggle: React.FC<Props> = ({ data }) => {
               <p>{x.name}</p>
               <div className='types'>
                 {x.types.map((x: any) => (
-                  <img className='types' src={``} alt={x.type.name}></img>
+                  <img
+                    className='types'
+                    src='images/Type_Normal.webp'
+                    alt={x.type.name}></img>
                 ))}
               </div>
             </div>

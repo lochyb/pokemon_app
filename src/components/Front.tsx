@@ -44,7 +44,7 @@ const Front = () => {
       .then((response: any) => setSinglePokemon(response))
       .then(() => setSingleLoading(false));
   }
-
+  const test = [1, 2, 3, 4, 5, 6];
   // Testing Function Ends
 
   return (
@@ -61,7 +61,6 @@ const Front = () => {
       </form>
 
       <div>{!singleLoading && <Info data={singlePokemon} />}</div> */}
-
       <hr></hr>
       {
         <div>
@@ -77,7 +76,6 @@ const Front = () => {
             }>
             Gen 2
           </button>
-
           <button
             onClick={() =>
               getData("https://pokeapi.co/api/v2/pokemon?limit=135&offset=251")
@@ -90,13 +88,16 @@ const Front = () => {
             }>
             Gen 4
           </button>
-
           {!manyLoading ? (
             <ShinyList data={manyPokemon} />
           ) : (
-            <>
-              <SkeletonCard />
-            </>
+            <div className='skeleton-wrapper'>
+              <div>
+                {test.map((n) => (
+                  <SkeletonCard />
+                ))}
+              </div>
+            </div>
           )}
         </div>
       }
