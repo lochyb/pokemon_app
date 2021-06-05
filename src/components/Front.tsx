@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Info from "./Info";
 import ShinyList from "./ShinyList";
 import { getPokemon } from "../fetch";
@@ -21,12 +21,9 @@ const Front = () => {
     const set = await loadingPokemon(response.results);
     const update = await setManyLoading(false);
   }
-<<<<<<< HEAD
   useEffect(() => {
     return () => {};
   }, [manyPokemon]);
-=======
->>>>>>> main
 
   const loadingPokemon = async (data: any) => {
     let _pokemonData = await Promise.all(
@@ -46,11 +43,7 @@ const Front = () => {
       .then((response: any) => setSinglePokemon(response))
       .then(() => setSingleLoading(false));
   }
-<<<<<<< HEAD
   const test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-=======
-
->>>>>>> main
   // Testing Function Ends
 
   return (
@@ -67,10 +60,6 @@ const Front = () => {
       </form>
 
       <div>{!singleLoading && <Info data={singlePokemon} />}</div>
-<<<<<<< HEAD
-=======
-
->>>>>>> main
       <hr></hr>
       {
         <div>
