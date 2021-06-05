@@ -6,15 +6,12 @@ import { SkeletonCard } from "./skeleton/SkeletonCard";
 
 const Front = () => {
   const [tab, setTab] = useState(true);
+  const [searchInput, setSearchInput] = useState("");
+  const [pokemonName, setPokemonName] = useState("ditto");
   const [singlePokemon, setSinglePokemon] = useState({});
   const [singleLoading, setSingleLoading] = useState(true);
   const [manyPokemon, setManyPokemon] = useState({});
   const [manyLoading, setManyLoading] = useState(true);
-  const [pokemonSearch, setPokemonSearch] = useState("bulbasaur");
-  const [singlePokemonData, setSinglePokemonData] = useState({
-    data: null,
-    loading: true,
-  });
 
   async function getData(url: any) {
     setManyLoading(true);
@@ -23,9 +20,9 @@ const Front = () => {
     const update = await setManyLoading(false);
   }
   useEffect(() => {
-    console.log(tab);
+    getData("https://pokeapi.co/api/v2/pokemon?limit=151");
     return () => {};
-  }, [tab]);
+  }, []);
 
   const loadingPokemon = async (data: any) => {
     let _pokemonData = await Promise.all(
@@ -37,11 +34,21 @@ const Front = () => {
     setManyPokemon(_pokemonData);
   };
 
-  function getSinglePokemon(e: any) {
-    e.preventDefault();
-    getPokemon(`https://pokeapi.co/api/v2/pokemon/${pokemonSearch}`)
+  useEffect(() => {
+    getPokemon(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
       .then((response: any) => setSinglePokemon(response))
       .then(() => setSingleLoading(false));
+    return () => {};
+  }, [pokemonName]);
+
+  function updateName(e: any) {
+    e.preventDefault();
+    setPokemonName(searchInput);
+  }
+
+  function scrollTop() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0;
   }
   const test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
@@ -51,13 +58,13 @@ const Front = () => {
         <h1>Pokemon Search App</h1>
         <button
           className='tab-button'
-          style={tab ? { background: "pink" } : { background: "white" }}
+          style={tab ? { background: "white" } : { background: "#67c5ff" }}
           onClick={() => setTab(true)}>
           <h3>Shiny List</h3>
         </button>
         <button
           className='tab-button'
-          style={tab ? { background: "white" } : { background: "pink" }}
+          style={tab ? { background: "#67c5ff" } : { background: "white" }}
           onClick={() => setTab(false)}>
           <h3>Search</h3>
         </button>
@@ -95,7 +102,7 @@ const Front = () => {
               className='btn'
               onClick={() =>
                 getData(
-                  "https://pokeapi.co/api/v2/pokemon?limit=135&offset=251"
+                  "https://pokeapi.co/api/v2/pokemon?limit=107&offset=386"
                 )
               }>
               Generation 4
@@ -116,11 +123,14 @@ const Front = () => {
         </div>
       ) : (
         <div>
-          <form onSubmit={getSinglePokemon}>
+          <form
+            onSubmit={(x) => {
+              updateName(x);
+            }}>
             <input
               type='text'
               placeholder='Pokemon Name or Number'
-              onChange={(x) => setPokemonSearch(x.target.value.toLowerCase())}
+              onChange={(x) => setSearchInput(x.target.value.toLowerCase())}
               required={true}
             />
             <button>Search</button>
@@ -128,6 +138,9 @@ const Front = () => {
           <div>{!singleLoading && <Info data={singlePokemon} />}</div>
         </div>
       )}
+      <button className='top-button' onClick={scrollTop}>
+        Top
+      </button>
     </div>
   );
 };
