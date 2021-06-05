@@ -22,7 +22,6 @@ const Front = () => {
     const update = await setManyLoading(false);
   }
   useEffect(() => {
-    console.log("Changed");
     return () => {};
   }, [manyPokemon]);
 
@@ -44,12 +43,12 @@ const Front = () => {
       .then((response: any) => setSinglePokemon(response))
       .then(() => setSingleLoading(false));
   }
-  const test = [1, 2, 3, 4, 5, 6];
+  const test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
   // Testing Function Ends
 
   return (
     <div>
-      {/* <h1>Pokemon Search App</h1>
+      <h1>Pokemon Search App</h1>
       <form onSubmit={getSinglePokemon}>
         <input
           type='text'
@@ -60,7 +59,7 @@ const Front = () => {
         <button>Search</button>
       </form>
 
-      <div>{!singleLoading && <Info data={singlePokemon} />}</div> */}
+      <div>{!singleLoading && <Info data={singlePokemon} />}</div>
       <hr></hr>
       {
         <div>
