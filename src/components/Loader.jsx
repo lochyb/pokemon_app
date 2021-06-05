@@ -1,10 +1,5 @@
-// import React from "react";
-// import { SkeletonLayout } from "./skeleton/SkeletonLayout";
+import React from "react";
 
-// export const Loader = () => {
-//   return (
-//     <div>
-//       <SkeletonLayout></SkeletonLayout>
-//     </div>
-//   );
-// };
+export const Loader = () => {
+  return <div>Loading...</div>;
+};
