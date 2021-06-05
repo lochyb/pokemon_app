@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Info from "./Info";
 import ShinyList from "./ShinyList";
 import { getPokemon } from "../fetch";
+import { SkeletonCard } from "./skeleton/SkeletonCard";
 
 const Front = () => {
   const [singlePokemon, setSinglePokemon] = useState({});
@@ -58,7 +59,6 @@ const Front = () => {
         />
         <button>Search</button>
       </form>
-
       <div>{!singleLoading && <Info data={singlePokemon} />}</div>
       <hr></hr>
       {
@@ -89,11 +89,20 @@ const Front = () => {
             Gen 4
           </button>
 
-          {!manyLoading && (
-            <ShinyList data={manyPokemon} loading={manyLoading} />
+          {!manyLoading ? (
+            <ShinyList data={manyPokemon} />
+          ) : (
+            <div className='skeleton-wrapper'>
+              <div>
+                {test.map((n) => (
+                  <SkeletonCard />
+                ))}
+              </div>
+            </div>
           )}
         </div>
       }
+      );
     </div>
   );
 };

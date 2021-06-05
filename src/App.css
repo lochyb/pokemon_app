@@ -58,6 +58,8 @@ img {
   display: inline-flex;
   width: 92%;
   justify-content: space-evenly;
+  width: 59px;
+  height: 19px;
 }
 
 .scroll {
