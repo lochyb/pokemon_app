@@ -14,16 +14,37 @@ const ShinyPokemonToggle: React.FC<Props> = ({ data }) => {
             className='pokemonCard'
             id={`${x.id}`}
             onMouseDown={() => setActive(!active)}>
-            <div className='photoWrapper'>
-              <img
-                className={active ? "shiny sprites" : "sprites"}
-                src={x.sprites.versions["generation-iii"].emerald.front_shiny}
-                alt='pokemonIcon'></img>
-              <img
-                src={x.sprites.versions["generation-iii"].emerald.front_default}
-                alt='pokemonIcon'
-                className='sprites nonShiny'></img>
-            </div>
+            {data.id < 385 ? (
+              <div className='photoWrapper'>
+                <img
+                  className={active ? "shiny sprites" : "sprites"}
+                  src={x.sprites.versions["generation-iii"].emerald.front_shiny}
+                  alt='pokemonIcon'></img>
+                <img
+                  src={
+                    x.sprites.versions["generation-iii"].emerald.front_default
+                  }
+                  alt='pokemonIcon'
+                  className='sprites nonShiny'></img>
+              </div>
+            ) : (
+              <div className='photoWrapper'>
+                <img
+                  className={active ? "shiny sprites" : "sprites"}
+                  src={
+                    x.sprites.versions["generation-iv"]["diamond-pearl"]
+                      .front_shiny
+                  }
+                  alt='pokemonIcon'></img>
+                <img
+                  src={
+                    x.sprites.versions["generation-iv"]["diamond-pearl"]
+                      .front_default
+                  }
+                  alt='pokemonIcon'
+                  className='sprites nonShiny'></img>
+              </div>
+            )}
             <p>{x.id}</p>
             <p>{x.name}</p>
             <div className='types'>
