@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Info from "./Info";
 import ShinyList from "./ShinyList";
 import { getPokemon } from "../fetch";
+import { SkeletonCard } from "./skeleton/SkeletonCard";
 
 const Front = () => {
   const [singlePokemon, setSinglePokemon] = useState({});
@@ -16,11 +17,14 @@ const Front = () => {
 
   async function getData(url: any) {
     setManyLoading(true);
-    console.log(manyLoading);
     const response: any = await getPokemon(url);
     const set = await loadingPokemon(response.results);
     const update = await setManyLoading(false);
   }
+  useEffect(() => {
+    console.log("Changed");
+    return () => {};
+  }, [manyPokemon]);
 
   const loadingPokemon = async (data: any) => {
     let _pokemonData = await Promise.all(
@@ -40,12 +44,12 @@ const Front = () => {
       .then((response: any) => setSinglePokemon(response))
       .then(() => setSingleLoading(false));
   }
-
+  const test = [1, 2, 3, 4, 5, 6];
   // Testing Function Ends
 
   return (
     <div>
-      <h1>Pokemon Search App</h1>
+      {/* <h1>Pokemon Search App</h1>
       <form onSubmit={getSinglePokemon}>
         <input
           type='text'
@@ -56,8 +60,7 @@ const Front = () => {
         <button>Search</button>
       </form>
 
-      <div>{!singleLoading && <Info data={singlePokemon} />}</div>
-
+      <div>{!singleLoading && <Info data={singlePokemon} />}</div> */}
       <hr></hr>
       {
         <div>
@@ -73,7 +76,6 @@ const Front = () => {
             }>
             Gen 2
           </button>
-
           <button
             onClick={() =>
               getData("https://pokeapi.co/api/v2/pokemon?limit=135&offset=251")
@@ -86,9 +88,16 @@ const Front = () => {
             }>
             Gen 4
           </button>
-
-          {!manyLoading && (
-            <ShinyList data={manyPokemon} loading={manyLoading} />
+          {!manyLoading ? (
+            <ShinyList data={manyPokemon} />
+          ) : (
+            <div className='skeleton-wrapper'>
+              <div>
+                {test.map((n) => (
+                  <SkeletonCard />
+                ))}
+              </div>
+            </div>
           )}
         </div>
       }
