@@ -51,7 +51,9 @@ const ShinyPokemonToggle: React.FC<Props> = ({ data }) => {
               {x.types.map((x: any) => (
                 <img
                   className='types'
-                  src='images/Type_Normal.webp'
+                  src={`images/types/Type_${
+                    x.type.name.charAt(0).toUpperCase() + x.type.name.slice(1)
+                  }.gif`}
                   alt={x.type.name}></img>
               ))}
             </div>

@@ -17,7 +17,11 @@ const Front = () => {
     setManyLoading(true);
     const response: any = await getPokemon(url);
     const set = await loadingPokemon(response.results);
-    const update = await setManyLoading(false);
+    // const update = await setManyLoading(false);
+
+    setTimeout(() => {
+      const update = setManyLoading(false);
+    }, 1000);
   }
   useEffect(() => {
     getData("https://pokeapi.co/api/v2/pokemon?limit=151");
@@ -47,7 +51,7 @@ const Front = () => {
   }
 
   function scrollTop() {
-    document.body.scrollTop = 0; // For Safari
+    document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
   const test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -107,8 +111,8 @@ const Front = () => {
               }>
               Generation 4
             </button>
-            <h3>Click to see shiny</h3>
           </div>
+          <h3>Click to see shiny</h3>
           {!manyLoading ? (
             <ShinyList data={manyPokemon} />
           ) : (

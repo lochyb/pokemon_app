@@ -10,7 +10,7 @@ body {
 
 img {
   width: auto;
-  height: 200px;
+  height: 100px;
 }
 
 .btn {
@@ -21,7 +21,6 @@ img {
   border: solid 2px #67c5ff;
   border-radius: 3px;
   transition: 0.4s;
-  width: 25%;
 }
 
 .btn:hover {
@@ -35,17 +34,22 @@ img {
 
 .photoWrapper {
   position: relative;
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 100px;
   margin: 0 auto;
 }
+
+.photoWrapper,
+p {
+  margin: 5px;
+}
+
 .pokemonCard {
   display: inline-block;
-  margin: 1rem;
-  min-height: 300px;
+  margin: 5px;
   border: 1px solid black;
   background: white;
-  padding: 1rem;
+  padding: 5px;
   border-radius: 1rem;
 }
 
@@ -118,7 +122,8 @@ th {
 .shiny-list-header {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-content: center;
 }
 
 /* Top button */
@@ -130,4 +135,24 @@ th {
   display: block;
   height: 3rem;
   width: 3rem;
+}
+
+@media screen and (min-width: 770px) {
+  img {
+    width: auto;
+    height: 200px;
+  }
+  .photoWrapper {
+    height: 200px;
+    width: 200px;
+  }
+
+  tr {
+    display: block;
+    float: left;
+  }
+  th,
+  td {
+    display: block;
+  }
 }
