@@ -2,13 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "watch": true,
-    "lib": [
-      "dom",
-      "es7",
-      "es2017",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "es7", "es2017", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -23,7 +17,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

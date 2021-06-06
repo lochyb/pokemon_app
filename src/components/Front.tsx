@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Info from "./Info";
-import ShinyList from "./ShinyList";
+import Info from "./Search/Info";
+import ShinyList from "./ShinyList/ShinyList";
 import { getPokemon } from "../fetch";
 import { SkeletonCard } from "./skeleton/SkeletonCard";
 
