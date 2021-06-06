@@ -7,19 +7,33 @@ const SpritesGrid: React.FC<Props> = ({ data }) => {
   return (
     <div className='scroll'>
       <table className='shiny-table'>
-        <thead>
-          <tr>
-            <th scope='col'></th>
-            <th scope='col'>Gen 1</th>
-            <th scope='col'>Gen 2</th>
-            <th scope='col'>Gen 3</th>
-            <th scope='col'>Gen 4</th>
-            <th scope='col'>Gen 5</th>
-            <th scope='col'>Gen 6</th>
-            <th scope='col'>Gen 7</th>
+        <tbody className='grabbable'>
+          <tr className='tr-gen'>
+            <td>
+              <p>Game Series</p>
+            </td>
+            <td>
+              <p>Gen 1</p>
+            </td>
+            <td>
+              <p>Gen 2</p>
+            </td>
+            <td>
+              <p>Gen 3</p>
+            </td>
+            <td>
+              <p>Gen 4</p>
+            </td>
+            <td>
+              <p>Gen 5</p>
+            </td>
+            <td>
+              <p>Gen 6</p>
+            </td>
+            <td>
+              <p>Gen 7</p>
+            </td>
           </tr>
-        </thead>
-        <tbody>
           <tr>
             <td>Normal</td>
             <td>
@@ -60,7 +74,8 @@ const SpritesGrid: React.FC<Props> = ({ data }) => {
           </tr>
           <tr>
             <td>Shiny</td>
-            <td> -</td>
+
+            <td>-</td>
             <td>
               <img
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/shiny/${data.id}.png`}
