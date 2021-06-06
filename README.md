@@ -1,13 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
 ## Pokemon Project
 
 This is just a little project I decided to do to practice React and TypeScript.
 
-## Learn More
+Pokemon Data is taken from the Pokemon API.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+https://pokeapi.co/
 
-To learn React, check out the [React documentation](https://reactjs.org/).
