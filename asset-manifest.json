@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/pokemon_app/static/css/main.35eebad5.chunk.css",
+    "main.css": "/pokemon_app/static/css/main.d905b39e.chunk.css",
     "main.js": "/pokemon_app/static/js/main.6677349a.chunk.js",
     "main.js.map": "/pokemon_app/static/js/main.6677349a.chunk.js.map",
     "runtime-main.js": "/pokemon_app/static/js/runtime-main.004e3935.js",
@@ -8,14 +8,14 @@
     "static/js/2.0e576e58.chunk.js": "/pokemon_app/static/js/2.0e576e58.chunk.js",
     "static/js/2.0e576e58.chunk.js.map": "/pokemon_app/static/js/2.0e576e58.chunk.js.map",
     "index.html": "/pokemon_app/index.html",
-    "static/css/main.35eebad5.chunk.css.map": "/pokemon_app/static/css/main.35eebad5.chunk.css.map",
+    "static/css/main.d905b39e.chunk.css.map": "/pokemon_app/static/css/main.d905b39e.chunk.css.map",
     "static/js/2.0e576e58.chunk.js.LICENSE.txt": "/pokemon_app/static/js/2.0e576e58.chunk.js.LICENSE.txt",
     "static/media/App.css": "/pokemon_app/static/media/pexels-suzy-hazelwood-7026467.a05f1e4b.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.004e3935.js",
     "static/js/2.0e576e58.chunk.js",
-    "static/css/main.35eebad5.chunk.css",
+    "static/css/main.d905b39e.chunk.css",
     "static/js/main.6677349a.chunk.js"
   ]
 }
