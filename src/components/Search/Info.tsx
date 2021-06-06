@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Details from "./Details";
 import SpritesGrid from "./SpritesGrid";
+import { getPokemon } from "../fetch";
 
 interface Props {
-  data: any;
+  pokemonName: string | number;
 }
-const Info: React.FC<Props> = ({ data }) => {
+const Info: React.FC<Props> = ({ pokemonName }) => {
+  const [singlePokemon, setSinglePokemon] = useState({});
+  const [singleLoading, setSingleLoading] = useState(true);
+
+  useEffect(() => {
+    getPokemon(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+      .then((response: any) => setSinglePokemon(response))
+      .then(() => setSingleLoading(false));
+    return () => {};
+  }, [pokemonName]);
+
   return (
     <div>
-      <Details data={data} />
-      <SpritesGrid data={data} />
+      {!singleLoading && (
+        <>
+          <Details data={singlePokemon} />
+          <SpritesGrid data={singlePokemon} />
+        </>
+      )}
     </div>
   );
 };

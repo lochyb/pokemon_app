@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+// reusable fetch logic
 
 export async function getPokemon(url: string) {
   return new Promise((resolve, reject) => {
