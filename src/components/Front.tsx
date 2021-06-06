@@ -17,10 +17,17 @@ const Front = () => {
     setManyLoading(true);
     const response: any = await getPokemon(url);
     const set = await loadingPokemon(response.results);
-    const update = await setManyLoading(false);
+    // const update = await setManyLoading(false);
+
+    setTimeout(() => {
+      const update = setManyLoading(false);
+    }, 1000);
   }
   useEffect(() => {
-    getData("https://pokeapi.co/api/v2/pokemon?limit=151");
+    setTimeout(() => {
+      getData("https://pokeapi.co/api/v2/pokemon?limit=151");
+    }, 2000);
+    // getData("https://pokeapi.co/api/v2/pokemon?limit=151");
     return () => {};
   }, []);
 
@@ -47,15 +54,18 @@ const Front = () => {
   }
 
   function scrollTop() {
-    document.body.scrollTop = 0; // For Safari
+    document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
-  const test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  const amount = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+    22, 23, 24,
+  ];
 
   return (
     <div>
       <div className='heading-section'>
-        <h1>Pokemon Search App</h1>
+        {/* <h1>Pokemon Search App</h1> */}
         <button
           className='tab-button'
           style={tab ? { background: "white" } : { background: "#67c5ff" }}
@@ -107,14 +117,14 @@ const Front = () => {
               }>
               Generation 4
             </button>
-            <h3>Click to see shiny</h3>
           </div>
+          <h3>Click to see shiny</h3>
           {!manyLoading ? (
             <ShinyList data={manyPokemon} />
           ) : (
             <div className='skeleton-wrapper'>
               <div>
-                {test.map((n) => (
+                {amount.map((n) => (
                   <SkeletonCard />
                 ))}
               </div>
@@ -124,22 +134,24 @@ const Front = () => {
       ) : (
         <div>
           <form
+            className='wrap'
             onSubmit={(x) => {
               updateName(x);
             }}>
             <input
+              className='searchTerm'
               type='text'
               placeholder='Pokemon Name or Number'
               onChange={(x) => setSearchInput(x.target.value.toLowerCase())}
               required={true}
             />
-            <button>Search</button>
+            <button className='searchButton'>Search</button>
           </form>
-          <div>{!singleLoading && <Info data={singlePokemon} />}</div>
+          {!singleLoading && <Info data={singlePokemon} />}
         </div>
       )}
       <button className='top-button' onClick={scrollTop}>
-        Top
+        <span className='arrow'></span>
       </button>
     </div>
   );

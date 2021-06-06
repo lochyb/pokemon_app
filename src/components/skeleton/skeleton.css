@@ -1,14 +1,13 @@
 .skeleton-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  grid-gap: 1rem;
   /* display: flex;
   flex-wrap: wrap; */
   overflow: hidden;
 }
 
 .skeleton-card {
-  margin: 1rem;
+  margin: 5px;
   display: inline-block;
   position: relative;
   overflow: hidden;
@@ -16,42 +15,39 @@
 }
 
 .skeleton-background {
-  width: 201px;
-  height: 310px;
   background-color: rgb(197, 197, 197);
-  text-align: center;
-  align-items: center;
-  padding: 1rem;
+  padding: 5px;
   border-radius: 1rem;
 }
 
 .skeleton-sprite-pic {
   background-color: #ddd;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   margin: auto;
   border-radius: 1rem;
+  padding: 5px;
 }
 
 .skeleton-name {
   width: 50%;
   height: 19px;
   background-color: #ddd;
-  margin: 1rem auto;
+  margin: 4px auto;
 }
 
 .skeleton-id {
   width: 30%;
   height: 19px;
   background-color: #ddd;
-  margin: 1rem auto;
+  margin: 4px auto;
 }
 
 .skeleton-types {
   width: 30%;
   height: 19px;
   background-color: #ddd;
-  margin: 1rem auto;
+  margin: 4px auto;
 }
 
 /* animation section */
@@ -80,5 +76,13 @@
   }
   100% {
     transform: translateX(170%);
+  }
+}
+
+@media screen and (min-width: 770px) {
+  .skeleton-sprite-pic {
+    width: 200px;
+    height: 200px;
+    padding: 5px 6px;
   }
 }

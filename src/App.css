@@ -5,12 +5,13 @@
 body {
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  background-image: url(./pexels-suzy-hazelwood-7026467.jpg);
+  /* background-image: url(./pexels-suzy-hazelwood-7026467.jpg); */
+  background: #f5f5f5;
 }
 
 img {
   width: auto;
-  height: 200px;
+  height: 100px;
 }
 
 .btn {
@@ -21,7 +22,6 @@ img {
   border: solid 2px #67c5ff;
   border-radius: 3px;
   transition: 0.4s;
-  width: 25%;
 }
 
 .btn:hover {
@@ -35,17 +35,22 @@ img {
 
 .photoWrapper {
   position: relative;
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 100px;
   margin: 0 auto;
 }
+
+.photoWrapper,
+p {
+  margin: 5px;
+}
+
 .pokemonCard {
   display: inline-block;
-  margin: 1rem;
-  min-height: 300px;
+  margin: 5px;
   border: 1px solid black;
-  background: white;
-  padding: 1rem;
+  background: #f5f5f5;
+  padding: 5px;
   border-radius: 1rem;
 }
 
@@ -55,13 +60,6 @@ img {
   left: 0;
 }
 
-/* .shiny:hover {
-  visibility: hidden;
-} */
-
-/* .nonShiny {
-  pointer-events: none;
-} */
 .shiny {
   z-index: 10;
 }
@@ -85,17 +83,38 @@ img {
 }
 
 table {
-  border-collapse: collapse;
   margin: auto;
   background: white;
+  border-collapse: collapse;
 }
 
 tr,
 td,
 th {
-  border-style: solid;
+}
+td {
+  display: flex;
+  min-width: 100px;
+  min-height: 104px;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px black solid;
 }
 
+tbody {
+  display: flex;
+}
+
+/* single info */
+.single-info {
+  margin: auto;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
 /* Heading Section */
 
 .heading-section {
@@ -118,16 +137,112 @@ th {
 .shiny-list-header {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-content: center;
 }
 
 /* Top button */
 .top-button {
   position: sticky;
-  bottom: 0;
-  right: 0;
+  bottom: 5px;
+  right: 5px;
   float: right;
   display: block;
   height: 3rem;
   width: 3rem;
+  padding: 15px 5px 5px;
+  background: #67c5ff;
+  border: none;
+}
+.arrow {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transform: rotate(315deg);
+}
+
+/* search bar */
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #67c5ff;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+}
+
+.searchTerm:focus {
+  color: #00b4cc;
+}
+
+.searchButton {
+  border: 1px solid #67c5ff;
+  background: #67c5ff;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.wrap {
+  width: 50%;
+  margin: 1rem auto;
+  display: flex;
+}
+/* hide scrollbars */
+
+.scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media screen and (min-width: 770px) {
+  img {
+    width: auto;
+    height: 200px;
+  }
+  .photoWrapper {
+    height: 200px;
+    width: 200px;
+  }
+
+  td,
+  tr {
+    display: flex;
+    border-collapse: collapse;
+  }
+  td {
+    min-width: 200px;
+    min-height: auto;
+  }
+  tbody {
+    display: inline-block;
+  }
+  .tr-gen {
+    max-height: 30px;
+  }
+}
+
+.scroll {
+  overflow-y: hidden;
+  overflow-x: visible;
+  -ms-overflow-style: revert;
+  scrollbar-width: revert;
+}
+
+@media screen and (max-width: 770px) {
+  .scroll::-webkit-scrollbar {
+    display: none;
+  }
 }
