@@ -139,6 +139,7 @@ p {
   border: solid 2px #67c5ff;
   border-radius: 3px;
   transition: 0.4s;
+  background: white;
 }
 
 .btn:hover {
