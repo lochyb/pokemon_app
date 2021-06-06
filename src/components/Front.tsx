@@ -1,52 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Info from "./Search/Info";
 import ShinyList from "./ShinyList/ShinyList";
-import { getPokemon } from "../fetch";
-import { SkeletonCard } from "./skeleton/SkeletonCard";
 
 const Front = () => {
   const [tab, setTab] = useState(true);
   const [searchInput, setSearchInput] = useState("");
   const [pokemonName, setPokemonName] = useState("ditto");
-  const [singlePokemon, setSinglePokemon] = useState({});
-  const [singleLoading, setSingleLoading] = useState(true);
-  const [manyPokemon, setManyPokemon] = useState({});
-  const [manyLoading, setManyLoading] = useState(true);
-
-  async function getData(url: any) {
-    setManyLoading(true);
-    const response: any = await getPokemon(url);
-    const set = await loadingPokemon(response.results);
-    // const update = await setManyLoading(false);
-
-    setTimeout(() => {
-      const update = setManyLoading(false);
-    }, 1000);
-  }
-  useEffect(() => {
-    setTimeout(() => {
-      getData("https://pokeapi.co/api/v2/pokemon?limit=151");
-    }, 2000);
-    // getData("https://pokeapi.co/api/v2/pokemon?limit=151");
-    return () => {};
-  }, []);
-
-  const loadingPokemon = async (data: any) => {
-    let _pokemonData = await Promise.all(
-      data.map(async (pokemon: any) => {
-        let pokemonRecord = await getPokemon(pokemon.url);
-        return pokemonRecord;
-      })
-    );
-    setManyPokemon(_pokemonData);
-  };
-
-  useEffect(() => {
-    getPokemon(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-      .then((response: any) => setSinglePokemon(response))
-      .then(() => setSingleLoading(false));
-    return () => {};
-  }, [pokemonName]);
+  const [genSelect, setGenSelect] = useState(
+    "https://pokeapi.co/api/v2/pokemon?limit=151"
+  );
 
   function updateName(e: any) {
     e.preventDefault();
@@ -57,10 +19,6 @@ const Front = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
-  const amount = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23, 24,
-  ];
 
   return (
     <div>
@@ -85,14 +43,14 @@ const Front = () => {
             <button
               className='btn'
               onClick={() =>
-                getData("https://pokeapi.co/api/v2/pokemon?limit=151")
+                setGenSelect("https://pokeapi.co/api/v2/pokemon?limit=151")
               }>
               Generation 1
             </button>
             <button
               className='btn'
               onClick={() =>
-                getData(
+                setGenSelect(
                   "https://pokeapi.co/api/v2/pokemon?limit=100&offset=151"
                 )
               }>
@@ -102,7 +60,7 @@ const Front = () => {
             <button
               className='btn'
               onClick={() =>
-                getData(
+                setGenSelect(
                   "https://pokeapi.co/api/v2/pokemon?limit=135&offset=251"
                 )
               }>
@@ -111,7 +69,7 @@ const Front = () => {
             <button
               className='btn'
               onClick={() =>
-                getData(
+                setGenSelect(
                   "https://pokeapi.co/api/v2/pokemon?limit=107&offset=386"
                 )
               }>
@@ -119,17 +77,7 @@ const Front = () => {
             </button>
           </div>
           <h3>Click to see shiny</h3>
-          {!manyLoading ? (
-            <ShinyList data={manyPokemon} />
-          ) : (
-            <div className='skeleton-wrapper'>
-              <div>
-                {amount.map((n) => (
-                  <SkeletonCard />
-                ))}
-              </div>
-            </div>
-          )}
+          {<ShinyList urlString={genSelect} />}
         </div>
       ) : (
         <div>
@@ -147,7 +95,7 @@ const Front = () => {
             />
             <button className='searchButton'>Search</button>
           </form>
-          {!singleLoading && <Info data={singlePokemon} />}
+          <Info pokemonName={pokemonName} />
         </div>
       )}
       <button className='top-button' onClick={scrollTop}>

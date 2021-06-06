@@ -6,8 +6,8 @@ interface Props {
 const SpritesGrid: React.FC<Props> = ({ data }) => {
   return (
     <div className='scroll'>
-      <table className='shiny-table'>
-        <tbody className='grabbable'>
+      <table>
+        <tbody>
           <tr className='tr-gen'>
             <td>
               <p>Game Series</p>
