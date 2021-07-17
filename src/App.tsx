@@ -38,7 +38,7 @@ const App = () => {
 		<>
 			<Router>
 				<div className='navbar'>
-					<NavLink activeClassName='active' exact to='/'>
+					<NavLink activeClassName='active' exact to='/pokemon_app'>
 						Home
 					</NavLink>
 					<NavLink activeClassName='active' to='/shinylist'>
@@ -51,7 +51,7 @@ const App = () => {
 				<Switch>
 					<Route path='/shinylist' component={ShinyCards}></Route>
 					<Route path='/search' component={Search}></Route>
-					<Route path='/' component={Home}></Route>
+					<Route path='/pokemon_app' component={Home}></Route>
 				</Switch>
 			</Router>
 		</>

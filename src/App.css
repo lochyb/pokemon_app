@@ -65,7 +65,22 @@ tbody {
 p {
 	margin: 5px;
 }
+.go {
+	display: inline-flex;
+	margin: 3rem auto;
+	background: var(--primaryColor);
+	border: 1px solid gray;
+	font-size: 3rem;
+	align-items: center;
+}
+.go a {
+	text-decoration: none;
+	color: white;
+}
 
+.id-link:hover {
+	background: #7c86578c;
+}
 .pokemonCard {
 	display: inline-block;
 	margin: 5px;
@@ -119,7 +134,6 @@ p {
 .shiny-list-wrapper {
 	width: 100%;
 	margin: auto;
-	/* background: rgba(197, 197, 197, 0.2); */
 	padding-top: 1rem;
 }
 .shiny-list-header {
@@ -228,21 +242,9 @@ p {
 		height: 200px;
 		width: 200px;
 	}
-
 	td,
 	tr {
-		display: flex;
-		border-collapse: collapse;
-	}
-	td {
-		min-width: 200px;
-		min-height: auto;
-	}
-	tbody {
-		display: inline-block;
-	}
-	.tr-gen {
-		max-height: 30px;
+		min-height: 200px;
 	}
 }
 
