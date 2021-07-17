@@ -43,8 +43,8 @@ const ShinyList: React.FC<Props> = ({ urlString }) => {
 			{loading ? (
 				<div className='skeleton-wrapper'>
 					<div>
-						{amount.map((n) => (
-							<SkeletonCard />
+						{amount.map((n, id) => (
+							<SkeletonCard key={`skeleton${id}`} />
 						))}
 					</div>
 				</div>

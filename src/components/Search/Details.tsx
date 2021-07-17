@@ -11,9 +11,13 @@ const Details: React.FC<Props> = ({ data }) => {
 				<img
 					key={data.types.slot}
 					className='types'
-					src={`images/types/Type_${
-						x.type.name.charAt(0).toUpperCase() + x.type.name.slice(1)
-					}.gif`}
+					// src={x.type.name.charAt(0).toUpperCase() + x.type.name.slice(1)}
+					src={
+						require(`../types/Type_${
+							x.type.name.charAt(0).toUpperCase() + x.type.name.slice(1)
+						}.gif`).default
+					}
+					// src={Grass}
 					alt={x.type.name}></img>
 			))}
 			<img

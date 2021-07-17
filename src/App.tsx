@@ -3,9 +3,9 @@ import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
-	Link,
 	useRouteMatch,
 	useParams,
+	NavLink,
 } from "react-router-dom";
 import "./App.css";
 import ShinyCards from "./components/ShinyList/ShinyTop";
@@ -38,9 +38,15 @@ const App = () => {
 		<>
 			<Router>
 				<div className='navbar'>
-					<Link to='/'>Home</Link>
-					<Link to='/shinylist'>Shiny List</Link>
-					<Link to='/search'>Search</Link>
+					<NavLink activeClassName='active' exact to='/'>
+						Home
+					</NavLink>
+					<NavLink activeClassName='active' to='/shinylist'>
+						Shiny List
+					</NavLink>
+					<NavLink activeClassName='active' to='/search'>
+						Search
+					</NavLink>
 				</div>
 				<Switch>
 					<Route path='/shinylist' component={ShinyCards}></Route>

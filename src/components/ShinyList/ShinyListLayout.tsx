@@ -10,8 +10,9 @@ const ShinyPokemonToggle: React.FC<Props> = ({ data }) => {
 	return (
 		<div className='cardContainer'>
 			<div>
-				{data.map((x: any) => (
+				{data.map((x: any, key: number) => (
 					<div
+						key={`card${key}`}
 						className='pokemonCard'
 						id={`${x.id}`}
 						onMouseDown={() => setActive(!active)}>
@@ -47,15 +48,19 @@ const ShinyPokemonToggle: React.FC<Props> = ({ data }) => {
 							</div>
 						)}
 						{/* <p>{x.id}</p> */}
-						<Link to={`search/${x.id}`}>{`ID : ${x.id}`}</Link>
+						<Link
+							to={`search/${x.id}`}
+							key={`link${key}`}>{`ID : ${x.id}`}</Link>
 						<p>{x.name}</p>
 						<div className='types'>
 							{x.types.map((x: any) => (
 								<img
 									className='types'
-									src={`images/types/Type_${
-										x.type.name.charAt(0).toUpperCase() + x.type.name.slice(1)
-									}.gif`}
+									src={
+										require(`../types/Type_${
+											x.type.name.charAt(0).toUpperCase() + x.type.name.slice(1)
+										}.gif`).default
+									}
 									alt={x.type.name}></img>
 							))}
 						</div>
