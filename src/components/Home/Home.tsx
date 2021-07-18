@@ -1,17 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 export const Home = () => {
   return (
     <div className='home'>
-      <h3>Pokemon Shiny Application</h3>
-      <p>Created by Lochyb</p>
+      <h1>Pokemon Shiny App</h1>
+
       <p>
         Uses the <a href='https://pokeapi.co/'>Pokeapi</a> found here
       </p>
-      <div>
-        <a href='https://github.com/lochyb'>Lochyb Github</a>
-      </div>
 
       <div>
         <h3>How to use</h3>
@@ -22,6 +20,7 @@ export const Home = () => {
       <div className='go'>
         <Link to='/shinylist'>See Shiny Pokemon</Link>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -9,14 +9,14 @@ const ShinyPokemonToggle: React.FC<Props> = ({ data }) => {
   const [active, setActive] = useState(false);
 
   return (
-    <div>
+    <>
       {data.map((x: any, key: number) => (
         <div
           key={`card${key}`}
           className='pokemonCard'
           id={`${x.id}`}
           onMouseDown={() => setActive(!active)}>
-          {data.id < 385 ? (
+          {x.id < 385 ? (
             <div className='photoWrapper'>
               <img
                 className={active ? "shiny sprites" : "sprites"}
@@ -45,7 +45,7 @@ const ShinyPokemonToggle: React.FC<Props> = ({ data }) => {
                 className='sprites nonShiny'></img>
             </div>
           )}
-          <Link className='id-link' to={`search/${x.id}`} key={`link${key}`}>
+          <Link className='id-link' to={`search/${x.id}`} key={`link${x.id}`}>
             {`ID : ${x.id}`}
           </Link>
           <p>{x.name}</p>
@@ -58,12 +58,13 @@ const ShinyPokemonToggle: React.FC<Props> = ({ data }) => {
                     x.type.name.charAt(0).toUpperCase() + x.type.name.slice(1)
                   }.gif`).default
                 }
-                alt={x.type.name}></img>
+                alt={x.name}></img>
             ))}
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
 };
+
 export default ShinyPokemonToggle;

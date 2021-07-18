@@ -49,7 +49,7 @@ const ShinyList: React.FC<Props> = ({ urlString }) => {
           </div>
         </div>
       ) : (
-        <ShinyPokemonToggle data={obj} key={"toggle1"} />
+        <ShinyPokemonToggle data={obj} key={"toggleKey"} />
       )}
     </div>
   );

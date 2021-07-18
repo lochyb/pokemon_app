@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Footer from "../Home/Footer";
 import ShinyList from "./ShinyList";
 
 const ShinyCards = () => {
@@ -45,10 +46,10 @@ const ShinyCards = () => {
           Generation 4
         </button>
       </div>
-      <h3>Click to see shiny</h3>
       <div className='cardContainer'>
         <ShinyList urlString={genSelect} />
       </div>
+      <Footer />
     </div>
   );
 };

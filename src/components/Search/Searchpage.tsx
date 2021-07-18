@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Footer from "../Home/Footer";
 import Info from "./Info";
 
 interface Props {
@@ -34,6 +35,7 @@ const Searchpage: React.FC<Props> = ({ selectedId }) => {
         <button className='searchButton'>Search</button>
       </form>
       <Info pokemonName={pokemonName} />
+      <Footer />
     </>
   );
 };
