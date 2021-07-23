@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 interface Props {
-  data: any;
+  data: object[];
 }
 
-const ShinyPokemonToggle: React.FC<Props> = ({ data }) => {
+const ShinyCard: React.FC<Props> = ({ data }) => {
   const [active, setActive] = useState(false);
 
   return (
@@ -67,4 +67,4 @@ const ShinyPokemonToggle: React.FC<Props> = ({ data }) => {
   );
 };
 
-export default ShinyPokemonToggle;
+export default ShinyCard;
