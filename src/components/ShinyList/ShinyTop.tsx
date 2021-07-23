@@ -6,7 +6,6 @@ import ShinyCard from "./ShinyCard";
 import { useState } from "react";
 
 const ShinyCards = () => {
-  const [selected, setSelected] = useState(false);
   const state: any = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -17,14 +16,12 @@ const ShinyCards = () => {
 
   return (
     <div className='shiny-list-wrapper'>
-      {" "}
-      {!selected && <h3>Select a Generation</h3>}
+      {state.store.posts.length === undefined && <h3>Select a Generation</h3>}
       <div className='shiny-list-header'>
         <button
           className='btn'
           onClick={() => {
             dispatch(fetchPosts("https://pokeapi.co/api/v2/pokemon?limit=151"));
-            setSelected(true);
           }}>
           Generation 1
         </button>
@@ -36,7 +33,6 @@ const ShinyCards = () => {
                 "https://pokeapi.co/api/v2/pokemon?limit=100&offset=151"
               )
             );
-            setSelected(true);
           }}>
           Generation 2
         </button>
@@ -49,7 +45,6 @@ const ShinyCards = () => {
                 "https://pokeapi.co/api/v2/pokemon?limit=135&offset=251"
               )
             );
-            setSelected(true);
           }}>
           Generation 3
         </button>
@@ -61,12 +56,13 @@ const ShinyCards = () => {
                 "https://pokeapi.co/api/v2/pokemon?limit=107&offset=386"
               )
             );
-            setSelected(true);
           }}>
           Generation 4
         </button>
       </div>
-      {selected && (
+      {state.store.posts.length === undefined ? (
+        <p>Loading</p>
+      ) : (
         <div className='cardContainer'>
           {state.store.loading ? (
             <div className='skeleton-wrapper'>
