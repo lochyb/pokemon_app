@@ -8,6 +8,7 @@ import { useState } from "react";
 const ShinyCards = () => {
   const state: any = useSelector((state) => state);
   const dispatch = useDispatch();
+  const [active, setActive] = useState(true);
 
   const amount = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -15,7 +16,11 @@ const ShinyCards = () => {
   ];
 
   return (
-    <div className='shiny-list-wrapper'>
+    <div
+      className='shiny-list-wrapper'
+      onClick={() => {
+        setActive(!active);
+      }}>
       {state.store.posts.length === undefined && <h3>Select a Generation</h3>}
       <div className='shiny-list-header'>
         <button
@@ -73,10 +78,15 @@ const ShinyCards = () => {
               </div>
             </div>
           ) : (
-            <ShinyCard data={state.store.posts} key={`pokemonCard`} />
+            <div>
+              {state.store.posts.map((x: any, key: number) => (
+                <ShinyCard data={x} key={`pokemonCard${key}`} state={active} />
+              ))}{" "}
+            </div>
           )}
         </div>
       )}
+
       <Footer />
     </div>
   );

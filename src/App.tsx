@@ -35,9 +35,9 @@ function PokemonSearch() {
 const App = () => {
   return (
     <>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div className='navbar'>
-          <NavLink activeClassName='active' exact to='/pokemon_app'>
+          <NavLink activeClassName='active' exact to='/'>
             Home
           </NavLink>
           <NavLink activeClassName='active' to='/shinylist'>
@@ -50,7 +50,7 @@ const App = () => {
         <Switch>
           <Route path='/shinylist' component={ShinyCards}></Route>
           <Route path='/search' component={Search}></Route>
-          <Route path='/pokemon_app' component={Home}></Route>
+          <Route path='/' component={Home}></Route>
         </Switch>
       </Router>
     </>
