@@ -1,6 +1,4 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "./Footer";
 
 export const Home = () => {
   return (
@@ -20,7 +18,6 @@ export const Home = () => {
       <div className='go'>
         <Link to='/shinylist'>See Shiny Pokemon</Link>
       </div>
-      <Footer />
     </div>
   );
 };

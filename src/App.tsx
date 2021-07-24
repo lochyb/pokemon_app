@@ -10,6 +10,7 @@ import "./App.css";
 import ShinyCards from "./components/ShinyList/ShinyTop";
 import Searchpage from "./components/Search/Searchpage";
 import { Home } from "./components/Home/Home";
+import Footer from "./components/Home/Footer";
 
 function Search() {
   let match = useRouteMatch();
@@ -53,6 +54,7 @@ const App = () => {
           <Route path='/' component={Home}></Route>
         </Switch>
       </Router>
+      <Footer />
     </>
   );
 };

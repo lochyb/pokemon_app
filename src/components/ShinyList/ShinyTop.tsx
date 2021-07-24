@@ -1,12 +1,11 @@
-import Footer from "../Home/Footer";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../../state/actions/index";
 import { SkeletonCard } from "../skeleton/SkeletonCard";
-import ShinyCard from "./ShinyCard";
+import { ShinyCard } from "./ShinyCard";
 import { useState } from "react";
 
 const ShinyCards = () => {
-  const state: any = useSelector((state) => state);
+  const state: any = useSelector((stateful) => stateful);
   const dispatch = useDispatch();
   const [active, setActive] = useState(true);
 
@@ -65,9 +64,7 @@ const ShinyCards = () => {
           Generation 4
         </button>
       </div>
-      {state.store.posts.length === undefined ? (
-        <p>Loading</p>
-      ) : (
+      {state.store.posts.length !== undefined && (
         <div className='cardContainer'>
           {state.store.loading ? (
             <div className='skeleton-wrapper'>
@@ -78,22 +75,21 @@ const ShinyCards = () => {
               </div>
             </div>
           ) : (
-            <div>
+            <>
               {state.store.posts.map((x: any, key: number) => (
-                <ShinyCard data={x} key={`pokemonCard${key}`} state={active} />
-              ))}{" "}
-            </div>
+                <ShinyCard data={x} key={`pokemonKey${key}`} state={active} />
+              ))}
+            </>
           )}
         </div>
       )}
-
-      <Footer />
     </div>
   );
 };
-const mapStateToProps = (state: any) => ({
-  loading: state.loading,
-  posts: state,
-  hasErrors: state,
-});
-export default connect(mapStateToProps)(ShinyCards);
+// const mapStateToProps = (state: any) => ({
+//   loading: state.store.loading,
+//   posts: state.store.posts,
+//   hasErrors: state.store.hasError,
+// });
+// export default connect(mapStateToProps)(ShinyCards);
+export default ShinyCards;
