@@ -29,17 +29,17 @@ table {
   border-collapse: collapse;
 }
 
-td {
+/* td {
   display: flex;
   min-height: 104px;
   justify-content: space-around;
   align-items: center;
   border: 1px black solid;
-}
+} */
 
-tbody {
+/* tbody {
   display: flex;
-}
+} */
 
 footer {
   position: absolute;

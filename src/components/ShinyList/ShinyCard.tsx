@@ -39,7 +39,7 @@ export const ShinyCard: React.FC<Props> = ({ data, state }) => {
         </div>
       )}
       <Link className='id-link' to={`search/${data.id}`} key={`link${data.id}`}>
-        `ID : ${data.id}`
+        {`ID : ${data.id}`}
       </Link>
       <p>{data.name}</p>
       <div className='types'>
